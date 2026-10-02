@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     refresh_token_expire_days: int = 7
 
     frontend_url: str = "http://localhost:5173"
-    allowed_origins: str = "http://localhost:5173,http://localhost:3000"
+    allowed_origins: str = "http://localhost:5173,http://localhost:3000,https://meditrust-zeta.vercel.app"
 
     map_provider: str = "openstreetmap"
     geocoding_provider: str = ""

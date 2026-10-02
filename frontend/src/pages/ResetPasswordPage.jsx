@@ -140,7 +140,7 @@ export function ResetPasswordPage({ onNavigate }) {
                       : 'Show password'
                   }
                 >
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? 'hide' : 'show'}
                 </button>
               </div>
             </div>
@@ -183,7 +183,7 @@ export function ResetPasswordPage({ onNavigate }) {
                       : 'Show password'
                   }
                 >
-                  {showConfirmPassword ? '🙈' : '👁️'}
+                  {showConfirmPassword ? 'hide' : 'show'}
                 </button>
               </div>
             </div>

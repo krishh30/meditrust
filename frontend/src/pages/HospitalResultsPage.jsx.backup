@@ -177,9 +177,6 @@ export function HospitalResultsPage({
   const [searchInput, setSearchInput] =
     useState(initialQuery);
 
-  const [isListening, setIsListening] =
-    useState(false);
-
   const [searchQuery, setSearchQuery] =
     useState(initialQuery);
 
@@ -318,47 +315,6 @@ export function HospitalResultsPage({
   // =====================================================
   // SEARCH SUBMIT
   // =====================================================
-
-  const handleVoiceSearch = () => {
-    const SpeechRecognition =
-      window.SpeechRecognition ||
-      window.webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
-      alert(
-        "Voice search is not supported in this browser. Please use Google Chrome."
-      );
-      return;
-    }
-
-    const recognition = new SpeechRecognition();
-
-    recognition.lang = "en-IN";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-
-    recognition.onstart = () => {
-      setIsListening(true);
-    };
-
-    recognition.onresult = (event) => {
-      const transcript =
-        event.results[0][0].transcript.trim();
-
-      setSearchInput(transcript);
-    };
-
-    recognition.onerror = (event) => {
-      console.error("Voice search error:", event.error);
-      setIsListening(false);
-    };
-
-    recognition.onend = () => {
-      setIsListening(false);
-    };
-
-    recognition.start();
-  };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -1138,29 +1094,6 @@ export function HospitalResultsPage({
                   )
                 }
               />
-
-              <button
-                type="button"
-                className="voice-search-btn"
-                onClick={handleVoiceSearch}
-                title={isListening ? "Listening..." : "Search by voice"}
-                aria-label={isListening ? "Listening..." : "Search by voice"}
-                style={{
-                  border: "none",
-                  background: "transparent",
-                  cursor: "pointer",
-                  padding: "4px 8px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Icon
-                  name="mic"
-                  size={20}
-                  color={isListening ? "#4f46e5" : "#64748b"}
-                />
-              </button>
 
               {searchInput && (
                 <button

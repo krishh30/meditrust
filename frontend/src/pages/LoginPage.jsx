@@ -88,6 +88,34 @@ export function LoginPage({ onNavigate }) {
     onNavigate('home');
   };
 
+  const EyeIcon = ({ visible }) => (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {visible ? (
+        <>
+          <path d="M2 2l20 20" />
+          <path d="M6.7 6.7C4.9 8 3.5 9.8 2.5 12c1.8 4 5.4 7 9.5 7 1.6 0 3.1-.4 4.4-1.1" />
+          <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8" />
+          <path d="M17.3 17.3C19.1 16 20.5 14.2 21.5 12c-1.8-4-5.4-7-9.5-7-1.1 0-2.2.2-3.2.6" />
+        </>
+      ) : (
+        <>
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+          <circle cx="12" cy="12" r="3" />
+        </>
+      )}
+    </svg>
+  );
+
   return (
     <div className="auth-page-wrapper">
       <div className="auth-split-card">
@@ -168,9 +196,10 @@ export function LoginPage({ onNavigate }) {
 
             <button
               type="button"
-              className={`auth-tab-btn ${
-                mode === 'login' ? 'active' : ''
-              }`}
+              className={
+                'auth-tab-btn ' +
+                (mode === 'login' ? 'active' : '')
+              }
               onClick={() => switchMode('login')}
             >
               Log In
@@ -178,9 +207,10 @@ export function LoginPage({ onNavigate }) {
 
             <button
               type="button"
-              className={`auth-tab-btn ${
-                mode === 'signup' ? 'active' : ''
-              }`}
+              className={
+                'auth-tab-btn ' +
+                (mode === 'signup' ? 'active' : '')
+              }
               onClick={() => switchMode('signup')}
             >
               Create Account
@@ -239,9 +269,10 @@ export function LoginPage({ onNavigate }) {
 
                   <button
                     type="button"
-                    className={`role-toggle-btn ${
-                      role === 'patient' ? 'active' : ''
-                    }`}
+                    className={
+                      'role-toggle-btn ' +
+                      (role === 'patient' ? 'active' : '')
+                    }
                     onClick={() => setRole('patient')}
                   >
                     <Icon name="user" size={15} />
@@ -250,9 +281,10 @@ export function LoginPage({ onNavigate }) {
 
                   <button
                     type="button"
-                    className={`role-toggle-btn ${
-                      role === 'caregiver' ? 'active' : ''
-                    }`}
+                    className={
+                      'role-toggle-btn ' +
+                      (role === 'caregiver' ? 'active' : '')
+                    }
                     onClick={() => setRole('caregiver')}
                   >
                     <Icon name="heart" size={15} />
@@ -315,7 +347,7 @@ export function LoginPage({ onNavigate }) {
                       : 'Show password'
                   }
                 >
-                  {showPassword ? '🙈' : '👁️'}
+                  <EyeIcon visible={showPassword} />
                 </button>
 
               </div>
@@ -388,7 +420,7 @@ export function LoginPage({ onNavigate }) {
                           : 'Show confirm password'
                       }
                     >
-                      {showConfirmPassword ? '🙈' : '👁️'}
+                      <EyeIcon visible={showConfirmPassword} />
                     </button>
 
                   </div>
